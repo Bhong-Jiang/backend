@@ -2,10 +2,9 @@
 
 这是一个完整的课程成绩查询系统，包含后端API服务和前端用户界面。
 
-## 🚀 项目架构
+## 🚀 项目架构（后端部分）
 
 - **后端**: Node.js + Express + MySQL
-- **前端**: Vue 3 + Element Plus + Vite
 - **数据库**: MySQL 8.0+
 
 ## 📁 项目结构
@@ -40,9 +39,9 @@ my_first_net/
 
 ## 🚀 快速启动
 
-### 1. 启动后端服务
+### 后端启动（仅后端）
 
-```bash
+```powershell
 # 进入后端目录
 cd my_first_net
 
@@ -55,50 +54,15 @@ npm start
 
 后端将在 `http://localhost:3000` 启动
 
-### 2. 启动前端服务
+前端请参见 `frontend/README.md` 获取前端启动与开发说明。
+## 🌐 访问地址（后端）
 
-```bash
-# 进入前端目录
-cd frontend
-
-# 安装依赖
-npm install
-
-# 启动前端服务
-npm run dev
-```
-
-前端将在 `http://localhost:3001` 启动
-
-### 3. 使用启动脚本
-
-#### 后端启动
-```bash
-# Windows
-start.bat
-
-# PowerShell
-.\start.ps1
-```
-
-#### 前端启动
-```bash
-# Windows
-cd frontend
-start.bat
-```
-
-## 🌐 访问地址
-
-- **前端首页**: http://localhost:3001
-- **管理后台**: http://localhost:3001/admin
 - **后端API**: http://localhost:3000
 - **API文档**: http://localhost:3000/api
 
-## 🔐 默认账号（请不要在仓库中保存真实密码）
+## 🔐 管理员账号说明
 
-- **用户名**: `admin`
-- 初始密码请通过环境变量 `ADMIN_PASSWORD` 设置（见下文），或者在部署后通过管理面板创建/重置管理员账号。
+- 本仓库不包含任何默认管理员密码。请使用环境变量 `ADMIN_PASSWORD` 在首次运行时创建管理员，或在部署后通过后台手动创建管理员用户。
 
 ## 📱 使用流程
 
