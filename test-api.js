@@ -7,9 +7,15 @@ let adminToken = '';
 async function testAdminLogin() {
   try {
     console.log('测试管理员登录...');
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!adminPassword) {
+      console.error('ADMIN_PASSWORD is not set in environment. Aborting test.');
+      process.exit(1);
+    }
+
     const response = await axios.post(`${BASE_URL}/auth/login`, {
       username: 'admin',
-      password: 'jbh1314520..'
+      password: adminPassword
     });
     
     if (response.data.success) {

@@ -53,14 +53,19 @@ async function initDatabase() {
     );
     
     if (adminUsers.length === 0) {
-      const bcrypt = require('bcryptjs');
-      const hashedPassword = await bcrypt.hash('jbh1314520..', 10);
-      
-      await connection.execute(
-        'INSERT INTO users (username, password_hash, email, is_admin) VALUES (?, ?, ?, ?)',
-        ['admin', hashedPassword, 'admin@example.com', true]
-      );
-      console.log('管理员用户创建成功');
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      if (!adminPassword) {
+        console.warn('ADMIN_PASSWORD not set; skipping creation of default admin user. Please create an admin user manually or set ADMIN_PASSWORD in your env.');
+      } else {
+        const bcrypt = require('bcryptjs');
+        const hashedPassword = await bcrypt.hash(adminPassword, 10);
+
+        await connection.execute(
+          'INSERT INTO users (username, password_hash, email, is_admin) VALUES (?, ?, ?, ?)',
+          ['admin', hashedPassword, 'admin@example.com', true]
+        );
+        console.log('管理员用户创建成功');
+      }
     }
     
     connection.release();
