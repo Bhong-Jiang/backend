@@ -1,22 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 const { testConnection, initDatabase } = require('./config/database');
 
-// 读取环境配置
-const envPath = path.join(__dirname, 'config.env');
-const envContent = fs.readFileSync(envPath, 'utf8');
-const envVars = {};
+// 加载配置文件到 process.env（在本地使用 config.env，部署时可通过 Render UI 设置环境变量）
+require('dotenv').config({ path: path.join(__dirname, 'config.env') });
 
-envContent.split('\n').forEach(line => {
-  const [key, value] = line.split('=');
-  if (key && value && !key.startsWith('#')) {
-    envVars[key.trim()] = value.trim();
-  }
-});
-
-const PORT = envVars.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 

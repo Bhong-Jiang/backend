@@ -1,5 +1,9 @@
+
 const mysql = require('mysql2/promise');
-require('dotenv').config();
+const path = require('path');
+
+// 优先从 process.env 加载；在本地运行时会读取项目根目录下的 config.env（部署平台如 Render 应在控制台设置 env）
+require('dotenv').config({ path: path.join(__dirname, '..', 'config.env') });
 
 // 支持 DATABASE_URL 一键连接，也兼容分字段配置
 let dbConfig;
@@ -8,7 +12,7 @@ if (process.env.DATABASE_URL) {
 } else {
   dbConfig = {
     host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'my_code',
@@ -30,8 +34,10 @@ async function testConnection() {
     console.log('数据库连接成功!');
     connection.release();
   } catch (error) {
-    console.error('数据库连接失败:', error.message);
-    process.exit(1);
+    // 打印完整错误对象，便于在 Render 控制台查看
+    console.error('数据库连接失败:', error);
+    // 不直接 process.exit，让上层决定是否退出，以便看到更多日志
+    throw error;
   }
 }
 
