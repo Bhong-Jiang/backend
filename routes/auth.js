@@ -8,19 +8,9 @@ const fs = require('fs');
 
 const router = express.Router();
 
-// 读取JWT密钥
-const envPath = path.join(__dirname, '..', 'config.env');
-const envContent = fs.readFileSync(envPath, 'utf8');
-const envVars = {};
-
-envContent.split('\n').forEach(line => {
-  const [key, value] = line.split('=');
-  if (key && value && !key.startsWith('#')) {
-    envVars[key.trim()] = value.trim();
-  }
-});
-
-const JWT_SECRET = envVars.JWT_SECRET || 'your_jwt_secret_key_here_change_in_production';
+// 使用 dotenv 从 process.env 加载配置（部署平台应在环境变量中设置真实值）
+require('dotenv').config({ path: path.join(__dirname, '..', 'config.env') });
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key_here_change_in_production';
 
 // 管理员登录
 router.post('/login', [

@@ -222,3 +222,28 @@ MIT License
 4. **管理员登录**: 使用默认账号登录管理后台
 
 **享受你的查询系统！** 🚀
+
+## ⚙️ 环境变量与部署注意事项
+
+- 本项目不会在仓库中保存真实凭据。请复制 `config.env.example` 为 `config.env`（仅用于本地开发），并填写真实的数据库连接信息与 `JWT_SECRET`。
+- 在生产或部署平台（例如 Render）中，请在服务的 Environment / Secrets 设置中添加以下变量，不要把它们写入代码库：
+	- DB_HOST
+	- DB_PORT
+	- DB_USER
+	- DB_PASSWORD
+	- DB_NAME
+	- JWT_SECRET
+	- PORT
+
+- 如果你更喜欢使用单一连接字符串，请设置：
+	- DATABASE_URL=mysql://user:password@host:port/dbname
+
+### 部署后快速检测
+
+- 我们添加了一个健康检查端点用于验证数据库连通性：
+	- GET /health/db -> 返回 { success: true, message: 'database connection ok' } 或失败信息（仅包含非敏感错误消息）
+
+### 如果凭据曾被泄露
+
+- 立即在相应服务（如 Railway）中重置数据库密码并撤销旧凭据。
+- 若需从 Git 历史中彻底删除敏感文件，请在确认后告知，我会提供 `bfg` 或 `git filter-repo` 的具体步骤。

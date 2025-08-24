@@ -21,9 +21,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 路由
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
+const healthRoutes = require('./routes/health');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/health', healthRoutes);
 
 // 根路径
 app.get('/', (req, res) => {
