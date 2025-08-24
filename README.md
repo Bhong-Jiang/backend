@@ -11,16 +11,12 @@
 
 ```
 my_first_net/
-├── frontend/               # Vue 3前端项目
-│   ├── src/               # 源代码
-│   ├── package.json       # 前端依赖
-│   └── README.md          # 前端说明
 ├── config/                 # 后端配置
 ├── middleware/             # 后端中间件
 ├── routes/                 # 后端路由
 ├── package.json            # 后端依赖
 ├── server.js               # 后端服务器
-└── README.md               # 项目总说明
+└── README.md               # 后端说明
 ```
 
 ## 🎯 功能特性
@@ -86,27 +82,13 @@ npm start
 node test-api.js
 ```
 
-### 前端功能测试
-1. 启动前后端服务
-2. 在浏览器中测试各个功能
-3. 使用Vue DevTools调试
+## 🔧 技术细节（后端）
 
-## 🔧 技术细节
-
-### 后端技术栈
 - **框架**: Express.js
 - **数据库**: MySQL2
 - **认证**: JWT + bcryptjs
 - **验证**: express-validator
 - **跨域**: CORS
-
-### 前端技术栈
-- **框架**: Vue 3 (Composition API)
-- **路由**: Vue Router 4
-- **状态管理**: Pinia
-- **UI组件**: Element Plus
-- **构建工具**: Vite
-- **HTTP客户端**: Axios
 
 ## 📊 数据库结构
 
@@ -178,14 +160,12 @@ MIT License
 
 ---
 
-## 🎉 开始使用
+## 🎉 开始使用（后端）
 
 1. **启动后端**: 运行 `npm start`
-2. **启动前端**: 运行 `cd frontend && npm run dev`
-3. **访问系统**: 打开 http://localhost:3001
-4. **管理员登录**: 使用默认账号登录管理后台
+2. **访问后端 API**: 打开 http://localhost:3000
 
-**享受你的查询系统！** 🚀
+**享受你的后端服务！** 🚀
 
 ## ⚙️ 环境变量与部署注意事项
 
