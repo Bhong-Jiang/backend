@@ -49,7 +49,7 @@ npm start
 ```
 
 后端将在 `http://localhost:3000` 启动
-
+如需前端代码，请访问 [前端仓库](https://github.com/Bhong-Jiang/frontend)。
 前端请参见 `frontend/README.md` 获取前端启动与开发说明。
 ## 🌐 访问地址（后端）
 
@@ -197,3 +197,4 @@ MIT License
 "# backend" 
 "# backend" 
 # backend
+"# backend" 
